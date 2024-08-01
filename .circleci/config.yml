@@ -37,5 +37,7 @@ workflows:
             - run:
                 name: Install SSH Package
                 command: |
-                  apt-get update
+                  set -x
+                  apt-get update -y
                   apt-get install -y openssh-client
+                  set +x
