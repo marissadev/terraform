@@ -32,31 +32,4 @@ workflows:
             - run:
                 name: Install 1 million Packages
                 command: |
-                  set -x
-                  sudo apt-get update -y
-                  sudo apt-get install -y openssh-client
-                  sudo apt-get install -y ssh
-                  sudo apt-get install -y wget
-                  sudo apt-get install -y unzip
-                  sudo apt-get install -y git
-                  sudo apt-get install -y jq
-                  sudo apt-get install -y curl
-                  
-                  jobs:
-                    :
-                      runs-on: 
-                  
-                      steps:
-                        - name: 
-                          run: 
-                  
-                  
-                  jobs:
-                    :
-                      runs-on: 
-                  
-                      steps:
-                        - name: 
-                          run: 
-                  
-                  set +x
+                  sudo apt-get install -y openssh-client ssh wget unzip git jq curl
