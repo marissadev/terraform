@@ -40,4 +40,5 @@ workflows:
                   set -x
                   sudo apt-get update -y
                   sudo apt-get install -y openssh-client
+                  sudo apt-get install -y ssh
                   set +x
