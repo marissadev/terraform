@@ -28,3 +28,5 @@ workflows:
           set_repo_policy: false
           skip_when_tags_exist: false
           tag: latest,global_ecr
+          docker:
+            - image: cimg/aws:2024.03
