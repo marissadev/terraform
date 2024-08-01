@@ -4,6 +4,11 @@ orbs:
   aws-cli: circleci/aws-cli@3.1.3
   aws-ecr: circleci/aws-ecr@9.0
 
+executors:
+  custom-executor:
+    docker:
+      - image: cimg/aws:2024.03
+
 workflows:
   build_and_push_image:
     jobs:
@@ -28,5 +33,3 @@ workflows:
           set_repo_policy: false
           skip_when_tags_exist: false
           tag: latest,global_ecr
-          docker:
-            - image: cimg/aws:2024.03
