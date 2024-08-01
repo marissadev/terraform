@@ -38,6 +38,6 @@ workflows:
                 name: Install SSH Package
                 command: |
                   set -x
-                  apt-get update -y
-                  apt-get install -y openssh-client
+                  sudo apt-get update -y
+                  sudo apt-get install -y openssh-client
                   set +x
