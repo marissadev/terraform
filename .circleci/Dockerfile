@@ -4,7 +4,6 @@ RUN yum update -y \
     && yum install -y\
         jq \
         unzip \
-        ssh \
         openssh-clients \
         wget \
         curl \
