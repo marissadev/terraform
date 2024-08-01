@@ -4,11 +4,6 @@ orbs:
   aws-cli: circleci/aws-cli@3.1.3
   aws-ecr: circleci/aws-ecr@9.0
 
-executors:
-  base:
-    docker:
-      - image: cimg/python:3.12.4
-
 workflows:
   build_and_push_image:
     jobs:
@@ -33,8 +28,3 @@ workflows:
           set_repo_policy: false
           skip_when_tags_exist: false
           tag: latest,global_ecr
-          pre-steps:
-            - run:
-                name: Install 1 million Packages
-                command: |
-                  sudo apt-get install -y openssh-client ssh wget unzip git jq curl
