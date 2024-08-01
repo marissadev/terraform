@@ -7,7 +7,7 @@ orbs:
 executors:
   base:
     docker:
-      - image: cimg/aws
+      - image: cimg/python:3.12.4
 
 workflows:
   build_and_push_image:
