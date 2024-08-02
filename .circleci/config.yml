@@ -11,25 +11,14 @@ executors:
 
 workflows:
   build_and_push_image:
-    triggers:
-    - schedule:
-        cron: "12 17 * * *" #2:46PM UTC
-        filters:
-          branches:
-            only:
-              - main
     jobs:
       - aws-ecr/build_and_push_image:
           executor: custom-executor
           account_id: ${AWS_ACCOUNT_ID}
           auth:
             - aws-cli/setup:
-              filters:
-                branches:
-                  only:
-                    - main 
                 aws-access-key-id: AWS_ACCESS_KEY
-                aws-secret-access-key: AWS_SECRET_KEY                
+                aws-secret-access-key: AWS_SECRET_KEY
           create_repo: false
           extra_build_args: '--compress'
           no_output_timeout: 10m
