@@ -13,11 +13,11 @@ workflows:
   build_and_push_image:
     triggers:
       - schedule:
-          cron: "54 14 * * *" #2:46PM UTC
-      #    filters:
-      #      branches:
-      #        only:
-      #          - main
+          cron: "55 14 * * *" #2:46PM UTC
+          filters:
+            branches:
+              only:
+                - main
     jobs:
       - aws-ecr/build_and_push_image:
           executor: custom-executor
