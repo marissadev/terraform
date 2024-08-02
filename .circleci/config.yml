@@ -41,3 +41,7 @@ workflows:
           set_repo_policy: false
           skip_when_tags_exist: false
           tag: latest,global_ecr
+          filters:
+            branches:
+              only:
+                - main
