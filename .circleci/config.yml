@@ -13,7 +13,7 @@ workflows:
   build_and_push_image:
     triggers:
       - schedule:
-          cron: "38 10 * * *"
+          cron: "42 2 * * *" #2:42PM UTC
           filters:
             branches:
               only:
