@@ -13,7 +13,7 @@ workflows:
   build_and_push_image:
     triggers:
     - schedule:
-        cron: "6 17 * * *" #2:46PM UTC
+        cron: "10 17 * * *" #2:46PM UTC
         filters:
           branches:
             only:
@@ -26,6 +26,10 @@ workflows:
             - aws-cli/setup:
                 aws-access-key-id: AWS_ACCESS_KEY
                 aws-secret-access-key: AWS_SECRET_KEY 
+                  filters:
+                    branches:
+                      only:
+                        - main                
           create_repo: false
           extra_build_args: '--compress'
           no_output_timeout: 10m
