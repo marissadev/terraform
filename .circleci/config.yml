@@ -13,7 +13,7 @@ workflows:
   build_and_push_image:
     triggers:
       - schedule:
-          cron: "0/5 * * * *"
+          cron: "38 10 * * *"
           filters:
             branches:
               only:
