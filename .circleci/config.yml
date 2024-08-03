@@ -15,6 +15,7 @@ workflows:
                 aws-secret-access-key: AWS_SECRET_KEY
           create_repo: false
           dockerfile: Dockerfile
+          executors: base
           extra_build_args: '--compress'
           no_output_timeout: 10m
           path: .circleci
