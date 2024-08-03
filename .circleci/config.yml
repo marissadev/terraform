@@ -3,30 +3,16 @@ version: 2.1
 orbs:
   aws-cli: circleci/aws-cli@3.1.3
   aws-ecr: circleci/aws-ecr@9.0
-
-executors:
-  custom-executor:
-    docker:
-      - image: cimg/base:stable
-
-jobs:
-  pre_build_and_push:
-    executor: custom-executor
-    steps:
-      - setup_remote_docker:
-          docker_layer_caching: true
-
+          
 workflows:
   build_and_push_image:
     jobs:
-      - pre_build_and_push
       - aws-ecr/build_and_push_image:
           account_id: ${AWS_ACCOUNT_ID}
           auth:
             - aws-cli/setup:
                 aws-access-key-id: AWS_ACCESS_KEY
                 aws-secret-access-key: AWS_SECRET_KEY
-          executor: custom-executor
           create_repo: false
           dockerfile: Dockerfile
           extra_build_args: '--compress'
@@ -37,14 +23,12 @@ workflows:
           push_image: true
           region: ${AWS_DEFAULT_REGION}
           repo: circleci_repo
-          repo_encryption_kms_key: arn:aws:kms:us-east-1:730335195561:key/5adca3af-7613-4481-b48f-cadf1b79c637
+          repo_encryption_kms_key: # MASKED
           repo_encryption_type: KMS
           repo_scan_on_push: true
           set_repo_policy: false
           skip_when_tags_exist: false
           tag: latest,global_ecr
-          requires:
-            - pre_build_and_push
           filters:
             branches:
               only:
