@@ -8,27 +8,27 @@ executors:
   custom-executor:
     docker:
       - image: cimg/aws:2024.03
+
 jobs:
-  build:
-    docker:
-      - image: cimg/aws:2024.03
+  pre_build_and_push:
+    executor: custom-executor
     steps:
       - setup_remote_docker:
           docker_layer_caching: true
-          
+
 workflows:
   build_and_push_image:
     jobs:
-      - build
+      - pre_build_and_push
       - aws-ecr/build_and_push_image:
           account_id: ${AWS_ACCOUNT_ID}
           auth:
             - aws-cli/setup:
                 aws-access-key-id: AWS_ACCESS_KEY
                 aws-secret-access-key: AWS_SECRET_KEY
+          executor: custom-executor
           create_repo: false
           dockerfile: Dockerfile
-          executor: custom-executor
           extra_build_args: '--compress'
           no_output_timeout: 10m
           path: .circleci
@@ -43,6 +43,8 @@ workflows:
           set_repo_policy: false
           skip_when_tags_exist: false
           tag: latest,global_ecr
+          requires:
+            - pre_build_and_push
           filters:
             branches:
               only:
