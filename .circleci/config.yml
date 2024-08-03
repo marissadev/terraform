@@ -7,7 +7,7 @@ orbs:
 executors:
   custom-executor:
     docker:
-      - image: ubuntu-2204:current
+      - image: cimg/base:current-22.04
 
 workflows:
   build_and_push_image:
@@ -29,7 +29,7 @@ workflows:
           push_image: true
           region: ${AWS_DEFAULT_REGION}
           repo: circleci_repo
-          repo_encryption_kms_key: # MASKED
+          repo_encryption_kms_key: arn:aws:kms:us-east-1:730335195561:key/5adca3af-7613-4481-b48f-cadf1b79c637
           repo_encryption_type: KMS
           repo_scan_on_push: true
           set_repo_policy: false
