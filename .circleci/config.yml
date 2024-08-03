@@ -7,7 +7,7 @@ orbs:
 executors:
   custom-executor:
     docker:
-      - image: cimg/aws:2024.03
+      - image: cimg/base:stable
 
 jobs:
   pre_build_and_push:
