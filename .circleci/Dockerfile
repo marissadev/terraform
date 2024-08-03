@@ -1,5 +1,5 @@
 # CircleCI build container
-FROM amazonlinux:2
+FROM amazonlinux:latest
 
 RUN yum update -y \
   && yum install -y \
