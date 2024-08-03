@@ -5,13 +5,17 @@ orbs:
   aws-ecr: circleci/aws-ecr@9.0
 
 executors:
-  custom-executor:
+  ecr-executor:
     docker:
       - image: cimg/base:2024.08
 
-workflows:
+jobs:
   build_and_push_image:
-    jobs:
+    executor: ecr-executor
+    steps:
+      - setup_remote_docker:
+          docker_layer_caching: true
+      - checkout
       - aws-ecr/build_and_push_image:
           account_id: ${AWS_ACCOUNT_ID}
           auth:
@@ -20,7 +24,6 @@ workflows:
                 aws-secret-access-key: AWS_SECRET_KEY
           create_repo: false
           dockerfile: Dockerfile
-          executor: custom-executor
           extra_build_args: '--compress'
           no_output_timeout: 10m
           path: .circleci
@@ -35,6 +38,11 @@ workflows:
           set_repo_policy: false
           skip_when_tags_exist: false
           tag: latest,global_ecr
+    
+workflows:
+  build_and_push_workflow:
+    jobs:
+      - build_and_push_image:
           filters:
             branches:
               only:
