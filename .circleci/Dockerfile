@@ -1,15 +1,16 @@
 # CircleCI build container
-FROM amazonlinux:latest
+FROM amazonlinux:2023
 
 RUN dnf update -y \
   && dnf install -y \
     jq \
     unzip \
-    ssh \
+#    ssh \
     openssh-clients \
     wget \
     curl \
     git \
+  && dnf reinstall -y curl-minimal \   
   && wget -O- https://rpm.releases.hashicorp.com/AmazonLinux/hashicorp.repo | tee /etc/yum.repos.d/hashicorp.repo \
   && dnf install -y terraform-1.4.2 \
   && curl -s https://raw.githubusercontent.com/terraform-linters/tflint/master/install_linux.sh | bash \
