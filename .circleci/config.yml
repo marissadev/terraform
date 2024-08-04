@@ -7,7 +7,7 @@ orbs:
 executors:
   ecr-executor:
     docker:
-      - image: cimg/base
+      - image: cimg/base:latest
 
 jobs:
   build_and_push_image:
