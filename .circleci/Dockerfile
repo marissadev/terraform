@@ -1,11 +1,11 @@
 # CircleCI build container
-FROM amazonlinux:2023
+FROM amazonlinux:latest
 
-RUN yum update -y \
+RUN yum update -y --allowerasing\
   && yum install -y \
     jq \
     unzip \
-#    ssh \
+    ssh \
     openssh-clients \
     wget \
     curl \
