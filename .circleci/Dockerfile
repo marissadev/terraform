@@ -1,8 +1,8 @@
 # CircleCI build container
 FROM amazonlinux:latest
 
-RUN yum update -y --skip-broken \
-  && yum install -y \
+RUN yum update -y \
+  && yum install -y --skip-broken \
     jq \
     unzip \
     openssh-clients \
