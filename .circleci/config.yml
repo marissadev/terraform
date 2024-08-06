@@ -15,7 +15,7 @@ jobs:
     steps:
       - setup_remote_docker:
           docker_layer_caching: true
-          version: previous
+          version: current
       - aws-ecr/build_and_push_image:
           account_id: ${AWS_ACCOUNT_ID}
           auth:
