@@ -17,4 +17,6 @@ RUN yum update -y \
   && curl -s https://raw.githubusercontent.com/terraform-linters/tflint/master/install_linux.sh | bash \
   && echo 'export PATH=$PATH:/root/.local/bin' >> /root/.bashrc
 
-  #without --skip-broken, this doesn't succeed unless downgraded to FROM amazonlinux:2
+  # without --skip-broken, this doesn't succeed unless downgraded to FROM amazonlinux:2
+  # also works to check if ssh/curl are installed already, then to skip if yes.
+  # Assuming that conflicts arise when trying to reinstall these existing packages.
