@@ -1,5 +1,5 @@
 # CircleCI build container
-FROM amazonlinux:2023
+FROM amazonlinux:latest
 
 RUN dnf update -y \
   && dnf install -y \
