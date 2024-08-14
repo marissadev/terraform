@@ -35,7 +35,7 @@ jobs:
           repo_encryption_type: KMS
           repo_scan_on_push: true
           set_repo_policy: false
-#          skip_when_tags_exist: false
+          skip_when_tags_exist: false
           tag: latest,global_ecr
     
 workflows:
