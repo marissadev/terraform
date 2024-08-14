@@ -26,7 +26,7 @@ jobs:
           extra_build_args: '--compress'
           no_output_timeout: 10m
           path: .circleci
-          platform: linux/amd64
+          platform: linux/amd64  
           public_registry: false
           push_image: true
           region: ${AWS_DEFAULT_REGION}
@@ -35,7 +35,7 @@ jobs:
           repo_encryption_type: KMS
           repo_scan_on_push: true
           set_repo_policy: false
-          skip_when_tags_exist: false
+#          skip_when_tags_exist: false
           tag: latest,global_ecr
     
 workflows:
